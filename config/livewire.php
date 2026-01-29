@@ -1,7 +1,9 @@
 <?php
 
 return [
-
+	'aula' => [
+		'title' => 'Generics components',
+	],
 	/*
 	|---------------------------------------------------------------------------
 	| Component Locations

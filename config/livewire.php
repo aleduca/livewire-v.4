@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Generics components',
+		'title' => 'Page Components',
 	],
 	/*
 	|---------------------------------------------------------------------------
@@ -34,6 +34,7 @@ return [
 	'component_namespaces' => [
 		'layouts' => resource_path('views/layouts'),
 		'pages' => resource_path('views/pages'),
+		'blog' => resource_path('views/blog'),
 	],
 
 	/*

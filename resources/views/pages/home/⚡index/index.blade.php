@@ -1,18 +1,3 @@
-<?php
-
-use Livewire\Component;
-use Livewire\Attributes\Computed;
-use App\Models\User;
-
-new class extends Component
-{
-    #[Computed]
-    public function users(){
-      return User::all();
-    }
-};
-?>
-
 <div>
   <div class="max-w-5xl mx-auto">
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">

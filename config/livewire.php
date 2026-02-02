@@ -75,8 +75,8 @@ return [
 		'type' => 'mfc', // Options: 'sfc', 'mfc', 'class'
 		'emoji' => true, // Options: true, false
 		'with' => [
-			'js' => true,
-			'css' => true,
+			'js' => false,
+			'css' => false,
 			'test' => false,
 		],
 	],

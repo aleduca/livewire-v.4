@@ -27,7 +27,7 @@
   <!-- Conteúdo -->
   <main class="max-w-6xl mx-auto px-6 py-10">
     <div class="rounded-xl bg-white border border-slate-200 shadow-sm p-6">
-      {{ $menu ?? 'Menu' }}
+      {{ $menu ?? 'Meu menu' }}
       {{ $slot }}
     </div>
   </main>

@@ -33,7 +33,7 @@
           <tbody class="divide-y divide-slate-800">
             <!-- Linha -->
             @foreach($this->users as $user)
-            <livewire:user :user="$user" />
+            <livewire:user.index :$user :wire:key="$user->id" />
             @endforeach
 
             <!-- Repete -->

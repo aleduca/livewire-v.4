@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Page Components',
+		'title' => 'Layouts',
 	],
 	/*
 	|---------------------------------------------------------------------------
@@ -72,7 +72,7 @@ return [
 	*/
 
 	'make_command' => [
-		'type' => 'sfc', // Options: 'sfc', 'mfc', 'class'
+		'type' => 'mfc', // Options: 'sfc', 'mfc', 'class'
 		'emoji' => true, // Options: true, false
 		'with' => [
 			'js' => true,

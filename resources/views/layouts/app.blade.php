@@ -12,20 +12,20 @@
 
   <div class="flex h-screen">
 
-     <aside class="w-64 border-r border-slate-800 bg-slate-900 p-6 hidden lg:block">
-        <h2 class="text-lg font-semibold mb-6 text-white">
-            Livewire 4
-        </h2>
+    <aside class="w-64 border-r border-slate-800 bg-slate-900 p-6 hidden lg:block">
+      <h2 class="text-lg font-semibold mb-6 text-white">
+        Livewire 4
+      </h2>
 
-        <nav class="space-y-2 text-sm">
-            <p class="text-slate-400 uppercase tracking-wide text-xs mb-2">
-                Curso Livewire 4
-            </p>
+      <nav class="space-y-2 text-sm">
+        <p class="text-slate-400 uppercase tracking-wide text-xs mb-2">
+          Curso Livewire 4
+        </p>
 
-            <ul class="space-y-1">
-                <li class="text-slate-300">Link</li>
-            </ul>
-        </nav>
+        <ul class="space-y-1">
+          <li class="text-slate-300">Link</li>
+        </ul>
+      </nav>
     </aside>
 
     {{-- Main --}}
@@ -52,8 +52,8 @@
 
         {{-- Card principal --}}
         <div class="max-w-4xl mx-auto">
-            {{-- Slot da aula --}}
-            {{ $slot }}
+          {{-- Slot da aula --}}
+          {{ $slot }}
         </div>
 
       </main>

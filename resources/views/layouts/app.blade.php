@@ -23,7 +23,13 @@
         </p>
 
         <ul class="space-y-1">
-          <li class="text-slate-300">Link</li>
+          <li class="text-slate-300">
+            <a href="{{ route('home.index') }}" wire:navigate>Home</a>
+          </li>
+
+          <li class="text-slate-300">
+            <a href="{{ route('blog.index') }}" wire:navigate>Blog</a>
+          </li>
         </ul>
       </nav>
     </aside>

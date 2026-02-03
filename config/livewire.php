@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Wire Key e Slot',
+		'title' => 'Navigate and Pagination',
 	],
 	/*
 	|---------------------------------------------------------------------------

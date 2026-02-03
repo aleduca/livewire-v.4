@@ -39,6 +39,13 @@
             <!-- Repete -->
           </tbody>
         </table>
+
+          <div class="flex items-center justify-center px-6 py-4 border-t border-slate-800 text-sm text-slate-400">
+          <div class="flex items-center gap-2">
+            {{ $this->users->links() }}
+          </div>
+        </div>
+
       </div>
 
     </div>

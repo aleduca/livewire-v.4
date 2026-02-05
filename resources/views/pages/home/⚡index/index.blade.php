@@ -1,7 +1,6 @@
 <div>
   <div class="max-w-5xl mx-auto">
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
         <div>
@@ -33,14 +32,14 @@
           <tbody class="divide-y divide-slate-800">
             <!-- Linha -->
             @foreach($this->users as $user)
-            <livewire:user.index :$user :wire:key="$user->id" />
+            <livewire:user.index :$user :key="$user->id" />
             @endforeach
 
             <!-- Repete -->
           </tbody>
         </table>
 
-          <div class="flex items-center justify-center px-6 py-4 border-t border-slate-800 text-sm text-slate-400">
+        <div class="flex items-center justify-center px-6 py-4 border-t border-slate-800 text-sm text-slate-400">
           <div class="flex items-center gap-2">
             {{ $this->users->links() }}
           </div>

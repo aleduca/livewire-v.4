@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Navigate and Pagination',
+		'title' => 'LifeCycle Hooks',
 	],
 	/*
 	|---------------------------------------------------------------------------

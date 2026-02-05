@@ -1,6 +1,10 @@
 <div>
   <div class="max-w-5xl mx-auto">
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
+      <input type="text" wire:model="age">
+      <button wire:click='edit'>Change</button>
+      {{ $age }}
+
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
         <div>

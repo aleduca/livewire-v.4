@@ -8,37 +8,13 @@ use Livewire\WithPagination;
 new class extends Component {
 	use WithPagination;
 
-	public string $name;
-	public string $age;
-
-	public function mount()
-	{
-		$this->name = 'Alexandre';
-		$this->age = 43;
-	}
-
-	public function updatedName($property)
-	{
-		dump('updated ' . $property);
-	}
-
-	public function rendering()
-	{
-		dump('rendering');
-	}
-
-	public function rendered()
-	{
-		dump('rendered');
-	}
-
-	public function edit()
-	{
-	}
-
 	#[Computed]
 	public function users()
 	{
-		return User::paginate(10);
+		return User::withCount('posts')->paginate(10);
 	}
 };
+
+// Computed - dentro proprio componente mesma request
+// Computed - persist - dentro do component entre multiplas request do livewire
+// Computed - cache - dentro da mesma instância de um component chamado várias vezes e o cache é compartilhado nessas instâncias

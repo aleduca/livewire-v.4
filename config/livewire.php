@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'LifeCycle Hooks',
+		'title' => 'Computed Properties',
 	],
 	/*
 	|---------------------------------------------------------------------------

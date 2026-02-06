@@ -2,6 +2,7 @@
 
 use Livewire\Component;
 use App\Models\User;
+use Livewire\Attributes\Computed;
 
 new class extends Component
 {
@@ -11,15 +12,19 @@ new class extends Component
 
 <tr class="hover:bg-slate-800/40 transition">
   <td class="px-6 py-4 font-medium text-white">
-    {{ $user->name }}
+    {{ $this->user->name }}
   </td>
 
   <td class="px-6 py-4 text-slate-300">
-    {{ $user->email }}
+    {{ $this->user->email }}
   </td>
 
   <td class="px-6 py-4 text-slate-400">
-    {{ $user->created_at->format('d/m/Y') }}
+    {{ $this->user->created_at->format('d/m/Y') }}
+  </td>
+
+   <td class="px-6 py-4 text-slate-400 text-center">
+    {{ $this->user->posts_count }}
   </td>
 
   <td class="px-6 py-4 text-right space-x-3">

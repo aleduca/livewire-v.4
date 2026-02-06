@@ -1,10 +1,6 @@
 <div>
   <div class="max-w-5xl mx-auto">
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-      <input type="text" wire:model="age">
-      <button wire:click='edit'>Change</button>
-      {{ $age }}
-
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
         <div>
@@ -29,11 +25,13 @@
               <th class="px-6 py-3 text-left font-medium">Nome</th>
               <th class="px-6 py-3 text-left font-medium">Email</th>
               <th class="px-6 py-3 text-left font-medium">Criado em</th>
+              <th class="px-6 py-3 text-center font-medium">Posts</th>
               <th class="px-6 py-3 text-center font-medium">Ações</th>
             </tr>
           </thead>
 
           <tbody class="divide-y divide-slate-800">
+
             <!-- Linha -->
             @foreach($this->users as $user)
             <livewire:user.index :$user :key="$user->id" />

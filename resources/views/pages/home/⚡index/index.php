@@ -31,6 +31,6 @@ new class extends Component {
 			->orWhere('email', 'like', '%' . $this->searched . '%');
 		})
 			->withCount('posts')
-			->paginate(2);
+			->paginate(10);
 	}
 };

@@ -1,5 +1,6 @@
 <div>
   <div class="max-w-5xl mx-auto">
+    <x-user-search />
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
@@ -33,9 +34,13 @@
           <tbody class="divide-y divide-slate-800">
 
             <!-- Linha -->
-            @foreach($this->users as $user)
+            @forelse($this->users as $user)
             <livewire:user.index :$user :key="$user->id" />
-            @endforeach
+            @empty
+            <td class="px-6 py-4 text-slate-400">
+              Nenhum usuário encontrado
+            </td>
+            @endforelse
 
             <!-- Repete -->
           </tbody>

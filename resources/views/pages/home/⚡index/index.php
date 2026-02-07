@@ -3,18 +3,34 @@
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use App\Models\User;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 
 new class extends Component {
 	use WithPagination;
 
+	#[Url(as:'q')]
+	public string $searched = '';
+
+	public function search()
+	{
+		$this->resetPage();
+		// dump($this->searched);
+	}
+
+	public function updatingSearched()
+	{
+		$this->resetPage();
+	}
+
 	#[Computed]
 	public function users()
 	{
-		return User::withCount('posts')->paginate(10);
+		return User::where(function ($query) {
+			$query->where('name', 'like', '%' . $this->searched . '%')
+			->orWhere('email', 'like', '%' . $this->searched . '%');
+		})
+			->withCount('posts')
+			->paginate(2);
 	}
 };
-
-// Computed - dentro proprio componente mesma request
-// Computed - persist - dentro do component entre multiplas request do livewire
-// Computed - cache - dentro da mesma instância de um component chamado várias vezes e o cache é compartilhado nessas instâncias

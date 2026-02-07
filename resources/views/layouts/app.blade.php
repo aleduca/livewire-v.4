@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
   <title>{{ $title ?? 'Livewire 4 na prática' }}</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])

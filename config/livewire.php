@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Wire Model e Submit com Computed',
+		'title' => 'List Posts',
 	],
 	/*
 	|---------------------------------------------------------------------------

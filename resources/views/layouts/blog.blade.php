@@ -26,6 +26,9 @@
           <a href="{{ route('home.index') }}" wire:navigate class="rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
             Home
           </a>
+          <a href="{{ route('blog.index') }}" wire:navigate class="rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+            Blog
+          </a>
         </nav>
       </div>
 

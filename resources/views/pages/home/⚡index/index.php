@@ -12,6 +12,10 @@ new class extends Component {
 	#[Url(as:'q')]
 	public string $searched = '';
 
+	protected $listeners = [
+		'user-created' => '$refresh',
+	];
+
 	public function search()
 	{
 		$this->resetPage();

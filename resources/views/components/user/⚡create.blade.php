@@ -2,24 +2,54 @@
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
+use App\Models\User;
 
 new class extends Component
 {
     public bool $open = false;
+    #[Validate('required')]
     public string $name = '';
+    #[Validate('required|email|unique:users,email')]
     public string $email = '';
+    #[Validate('required|min:3')]
     public string $password = '';
     // protected $listeners = [
     //   'openCreateUser' => 'open'
     // ];
 
     #[On('openCreateUser')]
-    public function open(){
+    public function open()
+    {
       $this->open = true;
     }
 
-    public function close(){
+    public function close()
+    {
+      $this->resetValidation();
+
+      $this->reset('name','email','password');
+
       $this->open = false;
+    }
+
+    // public function rules(){
+    //   return [
+    //     'name' => 'required',
+    //     'email' => 'required|email|unique:users,email',
+    //     'password' => 'required|min:3',
+    //   ];
+    // }
+
+    public function create()
+    {
+      $validated = $this->validate();
+
+      User::create($validated);
+
+      $this->close();
+
+      $this->dispatch('user-created');
     }
 };
 ?>
@@ -47,7 +77,7 @@ new class extends Component
 
       <!-- Conteúdo -->
       <div class="text-zinc-300">
-        <form class="space-y-4">
+        <form wire:submit="create" class="space-y-4">
           <!-- Nome -->
           <div>
             <label for="name" class="mb-1 block text-sm font-medium text-zinc-300">
@@ -59,6 +89,9 @@ new class extends Component
                    border border-zinc-700
                    px-3 py-2
                    focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            @error('name')
+            <span class="text-red-600 italic text-sm">{{ $message }}</span>
+            @enderror
           </div>
 
           <!-- Email -->
@@ -67,11 +100,14 @@ new class extends Component
               Email
             </label>
 
-            <input id="email" wire:model="email" type="email" placeholder="email@exemplo.com" class="w-full rounded-lg
+            <input id="email" wire:model.live.debounce.1000ms="email" type="text" placeholder="email@exemplo.com" class="w-full rounded-lg
                    bg-zinc-800 text-zinc-100 placeholder-zinc-500
                    border border-zinc-700
                    px-3 py-2
                    focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            @error('email')
+            <span class="text-red-600 italic text-sm">{{ $message }}</span>
+            @enderror
           </div>
 
           <!-- Senha -->
@@ -80,11 +116,14 @@ new class extends Component
               Senha
             </label>
 
-            <input id="password" wire:model="password" type="password" placeholder="••••••••" class="w-full rounded-lg
+            <input id="password" wire:model.live.debounce.1000ms="password" type="password" placeholder="••••••••" class="w-full rounded-lg
                    bg-zinc-800 text-zinc-100 placeholder-zinc-500
                    border border-zinc-700
                    px-3 py-2
                    focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            @error('password')
+            <span class="text-red-600 italic text-sm">{{ $message }}</span>
+            @enderror
           </div>
 
           <!-- Ações -->
@@ -96,9 +135,8 @@ new class extends Component
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white
                    hover:bg-indigo-500 transition
                    disabled:opacity-60 cursor-pointer">
-              <span>
-                Salvar
-              </span>
+              <span wire:loading.remove wire:target="create">Salvar</span>
+              <span wire:loading wire:target="create">Aguarde...</span>
             </button>
           </div>
         </form>

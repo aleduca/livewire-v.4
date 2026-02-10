@@ -1,4 +1,5 @@
 <div>
+  <livewire:user.create />
   <div class="max-w-5xl mx-auto">
     <x-user-search />
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
@@ -6,15 +7,16 @@
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
         <div>
           <h2 class="text-lg font-semibold text-white">
-            Usuários ({{ $this->users->count() }})
+            Usuários ({{ $this->users->total() }})
           </h2>
           <p class="text-sm text-slate-400">
             Listagem de usuários
           </p>
         </div>
 
-        <button class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 transition">
-          Novo usuário
+        <button class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 transition cursor-pointer focus:outline-none" wire:click="openCreateUser">
+          <span wire:loading.remove wire:target="openCreateUser">Novo Usuário</span>
+          <span wire:loading wire:taregt="openCreateUser">Abrindo...</span>
         </button>
       </div>
 

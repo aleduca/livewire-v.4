@@ -23,6 +23,11 @@ new class extends Component {
 		$this->resetPage();
 	}
 
+	public function openCreateUser()
+	{
+		$this->dispatch('openCreateUser');
+	}
+
 	#[Computed]
 	public function users()
 	{

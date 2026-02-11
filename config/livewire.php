@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Validação e Cadastro',
+		'title' => 'Update User com Modal',
 	],
 	/*
 	|---------------------------------------------------------------------------

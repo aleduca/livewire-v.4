@@ -23,12 +23,12 @@ new class extends Component
     {{ $this->user->created_at->format('d/m/Y') }}
   </td>
 
-   <td class="px-6 py-4 text-slate-400 text-center">
+  <td class="px-6 py-4 text-slate-400 text-center">
     {{ $this->user->posts_count }}
   </td>
 
   <td class="px-6 py-4 text-right space-x-3">
-    <livewire:user.edit />
-    <livewire:user.delete />
+    <livewire:user.btn_edit :$user />
+    <livewire:user.btn_delete />
   </td>
 </tr>

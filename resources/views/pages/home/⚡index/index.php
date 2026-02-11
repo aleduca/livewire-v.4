@@ -13,13 +13,14 @@ new class extends Component {
 	public string $searched = '';
 
 	protected $listeners = [
-		'user-created' => '$refresh',
+		'user-created' => 'userCreated',
 	];
 
-	public function search()
+	public function userCreated()
 	{
+		$this->reset('searched');
+
 		$this->resetPage();
-		// dump($this->searched);
 	}
 
 	public function updatingSearched()
@@ -29,7 +30,7 @@ new class extends Component {
 
 	public function openCreateUser()
 	{
-		$this->dispatch('openCreateUser');
+		$this->dispatch('openSaveUser');
 	}
 
 	#[Computed]

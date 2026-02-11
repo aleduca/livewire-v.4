@@ -7,20 +7,29 @@ use App\Models\User;
 
 new class extends Component
 {
+    public User $user;
     public bool $open = false;
-    #[Validate('required')]
+    public bool $isEdit = false;
+
     public string $name = '';
-    #[Validate('required|email|unique:users,email')]
     public string $email = '';
-    #[Validate('required|min:3')]
     public string $password = '';
     // protected $listeners = [
     //   'openCreateUser' => 'open'
     // ];
 
-    #[On('openCreateUser')]
-    public function open()
+    private function canEdit($id)
     {
+        $this->isEdit = true;
+        $this->user = User::find($id);
+        $this->name = $this->user->name;
+        $this->email = $this->user->email;
+    }
+
+    #[On('openSaveUser')]
+    public function open($id = null)
+    {
+      if($id) $this->canEdit($id);
       $this->open = true;
     }
 
@@ -28,7 +37,7 @@ new class extends Component
     {
       $this->resetValidation();
 
-      $this->reset('name','email','password');
+      $this->reset('name','email','password','isEdit');
 
       $this->open = false;
     }
@@ -43,9 +52,32 @@ new class extends Component
 
     public function create()
     {
-      $validated = $this->validate();
+      $validated = $this->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:3',
+      ]);
 
       User::create($validated);
+
+      $this->close();
+
+      $this->dispatch('user-created');
+    }
+
+    public function update()
+    {
+      $validated = $this->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,'.$this->user->id,
+        'password' => 'nullable|min:3',
+      ]);
+
+      if(empty($validated['password'])){
+        unset($validated['password']);
+      }
+
+      $this->user->update($validated);
 
       $this->close();
 
@@ -77,7 +109,7 @@ new class extends Component
 
       <!-- Conteúdo -->
       <div class="text-zinc-300">
-        <form wire:submit="create" class="space-y-4">
+        <form wire:submit="{{ $this->isEdit ? 'update' : 'create' }}" class="space-y-4">
           <!-- Nome -->
           <div>
             <label for="name" class="mb-1 block text-sm font-medium text-zinc-300">
@@ -100,7 +132,7 @@ new class extends Component
               Email
             </label>
 
-            <input id="email" wire:model.live.debounce.1000ms="email" type="text" placeholder="email@exemplo.com" class="w-full rounded-lg
+            <input id="email" wire:model="email" type="text" placeholder="email@exemplo.com" class="w-full rounded-lg
                    bg-zinc-800 text-zinc-100 placeholder-zinc-500
                    border border-zinc-700
                    px-3 py-2
@@ -116,7 +148,7 @@ new class extends Component
               Senha
             </label>
 
-            <input id="password" wire:model.live.debounce.1000ms="password" type="password" placeholder="••••••••" class="w-full rounded-lg
+            <input id="password" wire:model="password" type="password" placeholder="••••••••" class="w-full rounded-lg
                    bg-zinc-800 text-zinc-100 placeholder-zinc-500
                    border border-zinc-700
                    px-3 py-2
@@ -135,7 +167,13 @@ new class extends Component
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white
                    hover:bg-indigo-500 transition
                    disabled:opacity-60 cursor-pointer">
-              <span wire:loading.remove wire:target="create">Salvar</span>
+              <span wire:loading.remove wire:target="create">
+                @if($this->isEdit)
+                Atualizar
+                @else
+                Salvar
+                @endif
+              </span>
               <span wire:loading wire:target="create">Aguarde...</span>
             </button>
           </div>

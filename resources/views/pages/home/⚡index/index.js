@@ -3,7 +3,7 @@ this.$on('user-created', () => {
         toast: true,
         position: 'top-end',
         icon: 'success',
-        title: 'User Created',
+        title: 'User Saved',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true

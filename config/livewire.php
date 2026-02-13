@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Eventos Dinâmicos e Organização',
+		'title' => 'Deletar User',
 	],
 	/*
 	|---------------------------------------------------------------------------

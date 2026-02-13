@@ -10,7 +10,7 @@
 </head>
 
 <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-
+  <livewire:toast />
   <div class="flex h-screen">
 
     <aside class="w-64 border-r border-slate-800 bg-slate-900 p-6 hidden lg:block">

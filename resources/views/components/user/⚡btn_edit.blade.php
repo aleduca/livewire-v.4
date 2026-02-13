@@ -5,10 +5,10 @@ use App\Models\User;
 
 new class extends Component
 {
-  public User $user;
+  public $id;
 
   public function edit(){
-     $this->dispatch('openSaveUser',id:$this->user->id);
+     $this->dispatch('openSaveUser',id:$this->id);
   }
 };
 ?>

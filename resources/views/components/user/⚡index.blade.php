@@ -7,6 +7,10 @@ use Livewire\Attributes\Computed;
 new class extends Component
 {
     public User $user;
+
+    protected $listeners = [
+      'user-updated-{user.id}' => '$refresh'
+    ];
 };
 ?>
 
@@ -23,12 +27,12 @@ new class extends Component
     {{ $this->user->created_at->format('d/m/Y') }}
   </td>
 
-  <td class="px-6 py-4 text-slate-400 text-center">
+  <td class="px-6 py-4 text-slate-400 text-center" wire:ignore>
     {{ $this->user->posts_count }}
   </td>
 
   <td class="px-6 py-4 text-right space-x-3">
-    <livewire:user.btn_edit :$user />
+    <livewire:user.btn_edit :id="$this->user->id" />
     <livewire:user.btn_delete />
   </td>
 </tr>

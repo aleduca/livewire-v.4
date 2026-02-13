@@ -62,7 +62,8 @@ new class extends Component
 
       $this->close();
 
-      $this->dispatch('user-created');
+      $this->dispatch('user-created')->to('pages::home.index');
+      $this->dispatch('toast', message: 'User Created')->to('toast');
     }
 
     public function update()
@@ -81,7 +82,8 @@ new class extends Component
 
       $this->close();
 
-      $this->dispatch('user-created');
+      $this->dispatch('user-updated-'.$this->user->id)->to('user.index');
+      $this->dispatch('toast', message: 'User Updated')->to('toast');
     }
 };
 ?>

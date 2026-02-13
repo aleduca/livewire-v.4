@@ -1,5 +1,5 @@
 <section class="bg-black border-b border-zinc-800">
-  <form wire:submit="search" action="" method="post">
+  <form>
     <div class="max-w-4xl mx-auto px-4 py-6">
       <div class="flex flex-col gap-3">
         <label for="search" class="text-sm font-medium text-zinc-400">

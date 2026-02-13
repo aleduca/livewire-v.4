@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Update User com Modal',
+		'title' => 'Eventos Dinâmicos e Organização',
 	],
 	/*
 	|---------------------------------------------------------------------------

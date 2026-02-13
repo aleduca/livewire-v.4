@@ -1,5 +1,5 @@
 <div>
-  <livewire:user.create />
+  <livewire:modal-user-save />
   <div class="max-w-5xl mx-auto">
     <x-user-search />
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">

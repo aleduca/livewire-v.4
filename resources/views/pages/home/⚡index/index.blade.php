@@ -39,9 +39,11 @@
             @forelse($this->users as $user)
             <livewire:user.index :$user :key="$user->id" />
             @empty
-            <td class="px-6 py-4 text-slate-400">
-              Nenhum usuário encontrado
-            </td>
+            <tr>
+              <td class="px-6 py-4 text-slate-400">
+                Nenhum usuário encontrado
+              </td>
+            </tr>
             @endforelse
 
             <!-- Repete -->

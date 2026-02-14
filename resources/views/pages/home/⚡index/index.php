@@ -14,7 +14,21 @@ new class extends Component {
 
 	protected $listeners = [
 		'user-created' => 'userCreated',
+		'user-deleted' => 'userDeleted',
 	];
+
+	public function userDeleted()
+	{
+		if ($this->users->isEmpty()) {
+			$this->resetPage();
+
+			if (filled($this->searched)) {
+				$this->reset('searched');
+			}
+
+			unset($this->users);
+		}
+	}
 
 	public function userCreated()
 	{

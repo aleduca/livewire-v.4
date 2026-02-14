@@ -33,6 +33,6 @@ new class extends Component
 
   <td class="px-6 py-4 text-right space-x-3">
     <livewire:user.btn_edit :id="$this->user->id" />
-    <livewire:user.btn_delete />
+    <livewire:user.btn_delete :id="$this->user->id" />
   </td>
 </tr>

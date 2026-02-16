@@ -31,6 +31,10 @@
           <li class="text-slate-300">
             <a href="{{ route('blog.index') }}" wire:navigate>Blog</a>
           </li>
+
+          <li class="text-slate-300">
+            <a href="{{ route('login.index') }}" wire:navigate>Login</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -49,9 +53,7 @@
           </p>
         </div>
 
-        <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400">
-          Olá, visitante
-        </span>
+        <livewire:greeting />
       </header>
 
       {{-- Conteúdo --}}

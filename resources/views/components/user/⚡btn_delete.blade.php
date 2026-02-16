@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\User;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 new class extends Component
 {
+  #[Locked]
   public $id;
 
   public function delete()

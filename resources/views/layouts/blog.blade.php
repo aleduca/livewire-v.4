@@ -34,13 +34,7 @@
 
       <!-- Right actions -->
       <div class="flex items-center gap-2">
-        <button class="rounded-md border border-slate-200 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 transition">
-          Ação
-        </button>
-
-        <button class="rounded-md bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800 transition">
-          Primário
-        </button>
+        <livewire:greeting />
       </div>
     </div>
   </header>

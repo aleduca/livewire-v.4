@@ -1,6 +1,7 @@
 <div>
-  <livewire:modal-user-save />
+  <livewire:dashboard.index :users="$this->users->total()" />
   <div class="max-w-5xl mx-auto">
+    <livewire:modal-user-save />
     <x-user-search />
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
       <!-- Header -->

@@ -6,14 +6,12 @@ use Livewire\Component;
 
 new class extends Component
 {
-  #[Reactive]
-  public $users;
+  public $users = 0;
 
   #[Computed]
   public function sales(){
     return Number::currency(mt_rand(1000,5000), 'BRL', 'pt_BR');
   }
-
 
 };
 ?>

@@ -1,5 +1,5 @@
 <div>
-  <livewire:dashboard.index :users="$this->users->total()" />
+  <livewire:dashboard.index />
   <div class="max-w-5xl mx-auto">
     <livewire:modal-user-save />
     <x-user-search />

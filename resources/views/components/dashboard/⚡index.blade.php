@@ -24,10 +24,16 @@ new class extends Component
 ?>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-  @island
+  @island(lazy:true)
+  @placeholder
+  <x-dashboard.loading-card />
+  @endplaceholder
   <x-dashboard.card :data="$this->sales" text="Sales" subtext="Sales of the month" />
   @endisland
-  @island
-  <x-dashboard.card wire:poll.5s :data="$this->users" text="Users" subtext="Users registered" />
+  @island(lazy:true)
+  @placeholder
+  <x-dashboard.loading-card />
+  @endplaceholder
+  <x-dashboard.card :data="$this->users" text="Users" subtext="Users registered" />
   @endisland
 </div>

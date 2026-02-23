@@ -1,5 +1,7 @@
+let confirmInitialized = false;
 Livewire.hook('component.init', ({ component }) => {
   if(component.el.hasAttribute('wire:confirm') && component.el.hasAttribute('wire:confirm-title')){
+    if(!confirmInitialized){
       let action = component.el.getAttribute('wire:click');
       window.confirm = function(message){
             Swal.fire({
@@ -17,5 +19,7 @@ Livewire.hook('component.init', ({ component }) => {
                   }
               });
           }
+      confirmInitialized = true;
     }
+  }
 })

@@ -2,7 +2,7 @@
 
 return [
 	'aula' => [
-		'title' => 'Lazy Components',
+		'title' => 'Comfirm - SweetAlert',
 	],
 	/*
 	|---------------------------------------------------------------------------

@@ -11,14 +11,14 @@ new class extends Component
 
   public function delete()
   {
-    User::where('id', $this->id)->delete();
+    // User::where('id', $this->id)->delete();
     $this->dispatch('user-deleted')->to('pages::home.index');
     $this->dispatch('toast',message:'User Deleted')->to('toast');
   }
 };
 ?>
 
-<button wire:click="delete" class="text-rose-400 hover:text-rose-300 cursor-pointer">
+<button wire:click="delete" wire:confirm="Tem certeza que deseja deletar o user?" wire:confirm-title="Tem certeza?" class="text-rose-400 hover:text-rose-300 cursor-pointer">
   <span wire:loading.remove wire:target="delete">Delete</span>
   <span wire:loading wire:target="delete">
     <x-loading />

@@ -13,7 +13,7 @@ new class extends Component
     Swal.fire({
       toast: true
       , position: 'top-end'
-      , icon: 'success'
+      , icon: data.icon || 'success'
       , title: data.message
       , showConfirmButton: false
       , timer: 3000

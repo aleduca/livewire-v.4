@@ -11,9 +11,11 @@ new class extends Component
 
   public function delete()
   {
-    User::where('id', $this->id)->delete();
-    $this->dispatch('user-deleted')->to('pages::home.index');
-    $this->dispatch('toast',message:'User Deleted')->to('toast');
+    sleep(1);
+    throw new Exception('Error');
+    // User::where('id', $this->id)->delete();
+    // $this->dispatch('user-deleted')->to('pages::home.index');
+    // $this->dispatch('toast',message:'User Deleted')->to('toast');
   }
 };
 ?>

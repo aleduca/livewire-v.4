@@ -2,7 +2,7 @@
   <livewire:dashboard.index />
   <div class="max-w-5xl mx-auto">
     <livewire:modal-user-save />
-    <x-user-search />
+    {{-- <x-user-search /> --}}
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">

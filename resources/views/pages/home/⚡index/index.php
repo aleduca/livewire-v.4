@@ -9,6 +9,9 @@ use Livewire\WithPagination;
 new class extends Component {
 	use WithPagination;
 
+	public $orderAscDesc = 'asc';
+	public $orderColumn = 'name';
+
 	#[Url(as:'q')]
 	public string $searched = '';
 
@@ -47,6 +50,18 @@ new class extends Component {
 		$this->dispatch('openSaveUser');
 	}
 
+	public function order(string $orderBy)
+	{
+		$this->orderAscDesc = ($this->orderColumn !== $orderBy) ? 'asc' : (($this->orderAscDesc === 'asc') ? 'desc' : 'asc');
+		$this->orderColumn = $orderBy;
+		$this->resetPage();
+	}
+
+	public function iconOrder(string $column)
+	{
+		return ($this->orderColumn === $column) ? 'icon-' . $this->orderAscDesc : 'icon-neutro';
+	}
+
 	#[Computed]
 	public function users()
 	{
@@ -54,6 +69,7 @@ new class extends Component {
 			$query->where('name', 'like', '%' . $this->searched . '%')
 			->orWhere('email', 'like', '%' . $this->searched . '%');
 		})
+			->orderBy($this->orderColumn, $this->orderAscDesc)
 			->withCount('posts')
 			->paginate(10);
 	}

@@ -26,10 +26,25 @@
         <table class="w-full text-sm">
           <thead class="bg-slate-800/50 text-slate-400">
             <tr>
-              <th class="px-6 py-3 text-left font-medium">Nome</th>
-              <th class="px-6 py-3 text-left font-medium">Email</th>
+              <th class="px-6 py-3 text-left font-medium cursor-pointer" wire:click="order('name')">
+                <div class="flex items-center gap-2">
+                  <span>Nome</span>
+                  <x-dynamic-component :component="$this->iconOrder('name')" />
+                </div>
+              </th>
+              <th class="px-6 py-3 text-left font-medium cursor-pointer" wire:click="order('email')">
+                <div class="flex items-center gap-2">
+                  <span>Email</span>
+                  <x-dynamic-component :component="$this->iconOrder('email')" />
+                </div>
+              </th>
               <th class="px-6 py-3 text-left font-medium">Criado em</th>
-              <th class="px-6 py-3 text-center font-medium">Posts</th>
+              <th class="px-6 py-3 text-center font-medium cursor-pointer" wire:click="order('posts_count')">
+                <div class="flex items-center gap-2">
+                  <span>Posts</span>
+                  <x-dynamic-component :component="$this->iconOrder('posts_count')" />
+                </div>
+              </th>
               <th class="px-6 py-3 text-center font-medium">Ações</th>
             </tr>
           </thead>

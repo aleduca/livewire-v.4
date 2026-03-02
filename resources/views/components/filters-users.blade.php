@@ -5,7 +5,7 @@
     <!-- Age Filter -->
     <div>
       <label class="flex items-center gap-2 cursor-pointer">
-        <input wire:click="filter('<',18,'age')" type="checkbox" @checked($this->isFilterChecked('<:18','age')) class="rounded border-slate-600 bg-slate-800 text-indigo-600 cursor-pointer">
+        <input wire:click="filter('<',18,'age')" @checked($this->isFilterChecked('<:18','age')) type="checkbox" class="rounded border-slate-600 bg-slate-800 text-indigo-600 cursor-pointer">
           <span class="text-sm text-slate-300">Menor de 18 anos</span>
       </label>
       <label class="flex items-center gap-2 cursor-pointer">

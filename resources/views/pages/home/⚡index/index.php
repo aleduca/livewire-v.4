@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\HasUserFilters;
+use App\Livewire\HasFilterUsers;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use App\Models\User;
@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 
 new class extends Component {
 	use WithPagination;
-	use HasUserFilters;
+	use HasFilterUsers;
 
 	public $orderAscDesc = 'asc';
 	public $orderColumn = 'name';

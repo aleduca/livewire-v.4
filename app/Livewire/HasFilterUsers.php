@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Url;
 
-trait HasUserFilters
+trait HasFilterUsers
 {
 	#[Url()]
 	public string $age = '';
@@ -26,8 +26,6 @@ trait HasUserFilters
 		}
 
 		$this->$filterBy = implode(',', $items);
-
-		$this->resetPage();
 	}
 
 	public function applyFilters($query, array $filters)
@@ -36,8 +34,9 @@ trait HasUserFilters
 			if ($this->$filterBy) {
 				$query->where(function ($subQuery) use ($filterBy) {
 					foreach (explode(',', $this->$filterBy) as $filter) {
-						// <:18,=:female
+						// <:18,>:30,=:male
 						[$operator,$value] = explode(':', $filter);
+
 						$subQuery->orWhere($filterBy, $operator, $value);
 					}
 				});

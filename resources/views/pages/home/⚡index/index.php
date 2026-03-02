@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\HasUserFilter;
+use App\Livewire\HasUserFilters;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use App\Models\User;
@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 
 new class extends Component {
 	use WithPagination;
-	use HasUserFilter;
+	use HasUserFilters;
 
 	public $orderAscDesc = 'asc';
 	public $orderColumn = 'name';
@@ -72,7 +72,7 @@ new class extends Component {
 			->orWhere('email', 'like', '%' . $this->searched . '%');
 		});
 
-		$query = $this->applyFilters($query);
+		$query = $this->applyFilters($query, ['age', 'gender']);
 
 		return $query->orderBy($this->orderColumn, $this->orderAscDesc)
 		->withCount('posts')

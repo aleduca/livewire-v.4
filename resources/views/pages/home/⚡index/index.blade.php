@@ -2,7 +2,8 @@
   <livewire:dashboard.index />
   <div class="max-w-5xl mx-auto">
     <livewire:modal-user-save />
-    {{-- <x-user-search /> --}}
+    <x-filters-users />
+    <x-user-search />
     <div class="rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
@@ -38,14 +39,14 @@
                   <x-dynamic-component :component="$this->iconOrder('email')" />
                 </div>
               </th>
-              <th class="px-6 py-3 text-left font-medium">Criado em</th>
+              <th class="px-6 py-3 text-left font-medium">Age</th>
+              <th class="px-6 py-3 text-left font-medium">Gender</th>
               <th class="px-6 py-3 text-center font-medium cursor-pointer" wire:click="order('posts_count')">
                 <div class="flex items-center gap-2">
                   <span>Posts</span>
                   <x-dynamic-component :component="$this->iconOrder('posts_count')" />
                 </div>
               </th>
-              <th class="px-6 py-3 text-center font-medium">Ações</th>
             </tr>
           </thead>
 

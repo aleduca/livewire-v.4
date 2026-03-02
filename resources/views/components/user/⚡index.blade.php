@@ -24,15 +24,14 @@ new class extends Component
   </td>
 
   <td class="px-6 py-4 text-slate-400">
-    {{ $this->user->created_at->format('d/m/Y') }}
+    {{ $this->user->age }}
+  </td>
+
+  <td class="px-6 py-4 text-slate-400">
+    {{ $this->user->gender }}
   </td>
 
   <td class="px-6 py-4 text-slate-400 text-center" wire:ignore>
     {{ $this->user->posts_count }}
-  </td>
-
-  <td class="px-6 py-4 text-right space-x-3">
-    <livewire:user.btn_edit :id="$this->user->id" />
-    <livewire:user.btn_delete :id="$this->user->id" />
   </td>
 </tr>

@@ -1,16 +1,19 @@
 <?php
 
 use App\Livewire\HasFilterUsers;
+use App\Livewire\HasInfiniteScroll;
 use Livewire\Component;
-use Livewire\Attributes\Computed;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 
 new class extends Component {
-	use WithPagination;
+	// use WithPagination;
 	use HasFilterUsers;
+	use HasInfiniteScroll;
 
+	public int $perPage = 10;
 	public $orderAscDesc = 'asc';
 	public $orderColumn = 'name';
 
@@ -44,7 +47,7 @@ new class extends Component {
 
 	public function updatingSearched()
 	{
-		$this->resetPage();
+		$this->resetInfiniteScroll();
 	}
 
 	public function openCreateUser()
@@ -64,10 +67,9 @@ new class extends Component {
 		return ($this->orderColumn === $column) ? 'icon-' . $this->orderAscDesc : 'icon-neutro';
 	}
 
-	#[Computed]
-	public function users()
+	public function query(): Builder
 	{
-		$query = User::where(function ($query) {
+		$query = User::query()->where(function ($query) {
 			$query->where('name', 'like', '%' . $this->searched . '%')
 			->orWhere('email', 'like', '%' . $this->searched . '%');
 		});
@@ -75,7 +77,15 @@ new class extends Component {
 		$query = $this->applyFilters($query, ['age', 'gender']);
 
 		return $query->orderBy($this->orderColumn, $this->orderAscDesc)
-		->withCount('posts')
-		->paginate(10);
+		->withCount('posts');
+	}
+
+	public function render()
+	{
+		$users = $this->resolveInfiniteScroll();
+
+		return $this->view([
+			'users' => $users,
+		]);
 	}
 };

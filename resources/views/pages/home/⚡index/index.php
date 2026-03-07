@@ -13,7 +13,6 @@ new class extends Component {
 	use HasFilterUsers;
 	use HasInfiniteScroll;
 
-	public int $perPage = 10;
 	public $orderAscDesc = 'asc';
 	public $orderColumn = 'name';
 

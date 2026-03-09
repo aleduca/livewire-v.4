@@ -21,27 +21,13 @@ new class extends Component {
 
 	protected $listeners = [
 		'user-created' => 'userCreated',
-		'user-deleted' => 'userDeleted',
 	];
-
-	public function userDeleted()
-	{
-		if ($this->users->isEmpty()) {
-			$this->resetPage();
-
-			if (filled($this->searched)) {
-				$this->reset('searched');
-			}
-
-			unset($this->users);
-		}
-	}
 
 	public function userCreated()
 	{
 		$this->reset('searched');
 
-		$this->resetPage();
+		$this->resetInfiniteScroll();
 	}
 
 	public function updatingSearched()
@@ -58,7 +44,8 @@ new class extends Component {
 	{
 		$this->orderAscDesc = ($this->orderColumn !== $orderBy) ? 'asc' : (($this->orderAscDesc === 'asc') ? 'desc' : 'asc');
 		$this->orderColumn = $orderBy;
-		$this->resetPage();
+
+		$this->resetInfiniteScroll();
 	}
 
 	public function iconOrder(string $column)
@@ -81,10 +68,8 @@ new class extends Component {
 
 	public function render()
 	{
-		$users = $this->resolveInfiniteScroll();
+		$this->resolveInfiniteScroll();
 
-		return $this->view([
-			'users' => $users,
-		]);
+		return $this->view();
 	}
 };

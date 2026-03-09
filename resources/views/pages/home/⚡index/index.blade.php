@@ -9,7 +9,7 @@
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
         <div>
           <h2 class="text-lg font-semibold text-white">
-            Usuários ({{ $users->count() }})
+            Usuários ({{ count($this->items) }})
           </h2>
           <p class="text-sm text-slate-400">
             Listagem de usuários
@@ -53,8 +53,8 @@
           <tbody class="divide-y divide-slate-800">
 
             <!-- Linha -->
-            @forelse($users as $user)
-            <livewire:user.index :$user :key="$user->id" />
+            @forelse($this->items as $user)
+            <livewire:user.index :$user :key="$user['id']" />
             @empty
             <tr>
               <td class="px-6 py-4 text-slate-400">
@@ -72,6 +72,8 @@
           <div wire:intersect="loadMore" class="flex items-center gap-2">
             Loading More...
           </div>
+          @else
+          Fim da lista
           @endif
         </div>
 

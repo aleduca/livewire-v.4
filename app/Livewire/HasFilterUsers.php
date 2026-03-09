@@ -26,6 +26,8 @@ trait HasFilterUsers
 		}
 
 		$this->$filterBy = implode(',', $items);
+
+		$this->resetInfiniteScroll();
 	}
 
 	public function applyFilters($query, array $filters)
